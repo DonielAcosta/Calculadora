@@ -7,6 +7,7 @@ import { CalculatorButton } from '../presentation/components/CalculatorButton';
 export const CalculeitorScreen = () => {
 
   const {
+    formula,
     number,
     prevNumber,
     buildNumber,
@@ -27,14 +28,12 @@ export const CalculeitorScreen = () => {
         <Text
           adjustsFontSizeToFit
           numberOfLines={ 1 }
-          style={ styles.mainResult }>{ number }</Text>
-
-        <Text
-          adjustsFontSizeToFit
-          numberOfLines={ 1 }
-          style={ styles.subResult }>
-            { (prevNumber === '0') ? ' ' : prevNumber  }
-          </Text>
+          style={ styles.mainResult }>{ formula }
+        </Text>
+        {
+        (formula === prevNumber) ? <Text style={ styles.subResult }> </Text> :
+        (<Text adjustsFontSizeToFit numberOfLines={ 1 } style={ styles.subResult }>{ prevNumber }</Text>)
+        }
       </View>
 
       <View style={ styles.row }>
